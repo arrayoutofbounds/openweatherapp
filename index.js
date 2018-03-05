@@ -29,8 +29,9 @@ request(url, function (err, response, body) {
       if(weather.main == undefined){
         res.render('index', {weather: null, error: 'Error, please try again'});
       } else {
+        let ic = "http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png";
         let weatherText = `It's ${weather.main.temp} degrees celcius in ${weather.name}!`;
-        res.render('index', {weather: weatherText, error: null});
+        res.render('index', {weather: weatherText, error: null, icon: ic});
       }
     }
   });
